@@ -52,9 +52,9 @@ def load_quant(model, checkpoint, wbits, groupsize=-1, faster_kernel=False, excl
     return model
 
 
-def load_quantized(model_name, wbits=4, groupsize=128, threshold=128):
-    model_name = model_name.replace('/', '_')
-    path_to_model = Path(f'./models/{model_name}')
+def load_quantized(path_to_model, wbits=4, groupsize=128, threshold=128):
+    #model_name = os.path.basename(path_to_model).replace('/', '_')
+    path_to_model = Path(path_to_model)
     found_pts = list(path_to_model.glob("*.pt"))
     found_safetensors = list(path_to_model.glob("*.safetensors"))
     pt_path = None
