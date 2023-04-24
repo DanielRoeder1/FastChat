@@ -4,7 +4,16 @@ import torch
 import transformers
 from transformers import AutoConfig, AutoModelForCausalLM
 
-sys.path.insert(0, str(Path("repositories/GPTQ-for-LLaMa")))
+import pathlib
+import os
+
+# Made path relative to file location
+current_path = pathlib.Path(__file__).parent.resolve()
+repo_path = current_path.parent.parent
+rel_path = os.path.join(repo_path, "repositories", "GPTQ-for-LLaMa")
+sys.path.insert(0, rel_path)
+
+
 from modelutils import find_layers
 from quant import make_quant
 
